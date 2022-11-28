@@ -11,7 +11,6 @@
 # **************************************************************************** #
 
 SRCS	= $(wildcard *.cpp)
-HEADER = $(wildcard *.hpp)
 
 OBJS=${SRCS:.cpp=.o}
 
@@ -24,7 +23,7 @@ $(NAME)	: $(OBJS)
 	$(COMFILE_FLAGS) -o $(NAME) $(OBJS)
 
 .cpp.o:
-	$(LINLING_FLAG) -c $< -o $@ -I $(HEADER)
+	$(LINLING_FLAG) -c $< -o $@ 
 	
 all	: $(NAME)
 

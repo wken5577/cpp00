@@ -14,8 +14,8 @@ SRCS = $(wildcard *.cpp)
 
 OBJS = $(SRCS:.cpp=.o)
 
-COMFILE_FLAGS = c++ -Wall -Wextra -Werror -std=c++98 -g
-LINLING_FLAG = c++ -Wall -Wextra -Werror -std=c++98 -g
+COMFILE_FLAGS = c++ -Wall -Wextra -Werror -std=c++98 
+LINLING_FLAG = c++ -Wall -Wextra -Werror -std=c++98 
 
 NAME = phonebook
 

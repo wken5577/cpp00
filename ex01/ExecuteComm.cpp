@@ -63,12 +63,14 @@ static Contact	*getData()
 	std::string	lastName;
 	std::string	nickname;
 	std::string	phoneNumber;
+	std::string darkestSecret;
 
 	firstName = getName("firstName");
 	lastName = getName("lastName");
 	nickname = getName("nickname");
 	phoneNumber = getNumber();
-	return new Contact(firstName, lastName, nickname, phoneNumber);
+	darkestSecret = getName("darkestSecret");
+	return new Contact(firstName, lastName, nickname, phoneNumber, darkestSecret);
 }
 
 void	executeAdd(PhoneBook *pb)

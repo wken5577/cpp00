@@ -33,32 +33,20 @@ Account::Account()
 Account::Account(int initial_deposit)
 	:_amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0)
 {
-	Account::_nbAccounts++;
 	Account::_totalAmount += initial_deposit;
 	this->_accountIndex = Account::_nbAccounts;
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
+	Account::_nbAccounts++;
 	_displayTimestamp();
-	std::cout << ": command not found" << std::endl;
+	std::cout << " index:" << this->_accountIndex << \
+	";amount:" << this->_amount << ";created" << std::endl;
 
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
-	std::cout << "amount:" << initial_deposit << ": command not found" << std::endl;
-
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
-	std::cout << "created: command not found" << std::endl;
 }
 
 Account::~Account()
 {
-	Account::_nbAccounts++;
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
 	_displayTimestamp();
-	std::cout << ": command not found" << std::endl;
-
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
-	std::cout << "amount:" << this->_amount << ": command not found" << std::endl;
-
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
-	std::cout << "closed: command not found" << std::endl;
+	std::cout << " index:" << this->_accountIndex << \
+	";amount:" << this->_amount << ";closed" << std::endl;
 }
 
 
@@ -73,79 +61,49 @@ void Account::_displayTimestamp(void)
 
 void Account::displayAccountsInfos()
 {
-	Account::_nbAccounts++;
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
 	_displayTimestamp();
-	std::cout << ": command not found" << std::endl;
 
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
-	std::cout << "total:" << Account::getTotalAmount() << ": command not found" << std::endl;
-
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
-	std::cout << "deposits:" << Account::getNbDeposits() << ": command not found" << std::endl;
-
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
-	std::cout << "withdrawals:" << Account::getNbWithdrawals() << ": command not found" << std::endl;
+	std::cout << " accounts:8" << ";total:" << Account::getTotalAmount() \
+	<< ";deposits:" << Account::getNbDeposits() << \
+	";withdrawals:" << Account::getNbWithdrawals() <<std::endl;
 }
 
 void Account::displayStatus() const
 {
-	Account::_nbAccounts++;
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
 	_displayTimestamp();
-	std::cout << ": command not found" << std::endl;
-
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
-	std::cout << "amount:" << this->_amount << ": command not found" << std::endl;
-
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
-	std::cout << "deposits:" << this->_nbDeposits << ": command not found" << std::endl;
-
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
-	std::cout << "withdrawals:" << this->_nbWithdrawals << ": command not found" << std::endl;
+	std::cout << " index:" << this->_accountIndex << \
+		";amount:" << this->_amount << ";deposits:" << this->_nbDeposits << \
+		";withdrawals:" << this->_nbWithdrawals << std::endl;
 }
 
 void Account::makeDeposit(int deposit)
 {
-	Account::_nbAccounts++;
 	Account::_totalNbDeposits++;
 	this->_nbDeposits = 1;
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
 	_displayTimestamp();
-	std::cout << ": command not found" << std::endl;
-
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
-	std::cout << "p_amount:" << this->_amount << ": command not found" << std::endl;
-
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
-	std::cout << "deposit:" << deposit << ": command not found" << std::endl;
-
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
-	std::cout << "amount:" << this->_amount + deposit << ": command not found" << std::endl;
-
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
-	std::cout << "nb_deposits:" << this->_nbDeposits << ": command not found" << std::endl;
-
+	std::cout << " index:" << this->_accountIndex << \
+	";p_amount:" << this->_amount << ";deposit:" << deposit << \
+	 ";amount:" << this->_amount + deposit << \
+	 ";nb_deposits:" << this->_nbDeposits << std::endl;
 	Account::_totalAmount -= this->_amount;
 	this->_amount += deposit;
 	Account::_totalAmount += this->_amount;
 }
 
+int		Account::checkAmount() const
+{
+	return this->_amount;
+}	
+
 bool	Account::makeWithdrawal(int withdrawal)
 {
-	Account::_nbAccounts++;
-
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
 	_displayTimestamp();
-	std::cout << ": command not found" << std::endl;
 
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
-	std::cout << "p_amount:" << this->_amount << ": command not found" << std::endl;
-
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
-	if (this->_amount - withdrawal < 0)
+	std::cout << " index:" << this->_accountIndex << \
+	 ";p_amount:" << this->_amount;
+	if (this->checkAmount() - withdrawal < 0)
 	{
-		std::cout << "withdrawal:refused: command not found" << std::endl;
+		std::cout << ";withdrawal:refused" << std::endl;
 		return false;
 	}
 	Account::_totalAmount -= this->_amount;
@@ -153,12 +111,7 @@ bool	Account::makeWithdrawal(int withdrawal)
 	Account::_totalAmount += this->_amount;
 	this->_nbWithdrawals = 1;
 	Account::_totalNbWithdrawals++;
-	std::cout << "withdrawal:" << withdrawal << ": command not found" << std::endl;
-
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
-	std::cout << "amount:" << this->_amount << ": command not found" << std::endl;
-
-	std::cout << "./19920104_091532.log: line " << Account::_nbAccounts << ": ";
-	std::cout << "nb_withdrawals:" << this->_nbWithdrawals << ": command not found" << std::endl;
+	std::cout << ";withdrawal:" << withdrawal << \
+	";amount:" << this->_amount << ";nb_withdrawals:" << this->_nbWithdrawals << std::endl;
 	return true;
 }

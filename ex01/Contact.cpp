@@ -2,12 +2,13 @@
 #include <iostream>
 
 Contact::Contact(std::string firstName, std::string	lastName, \
-		std::string nickname, std::string phoneNumber)
+		std::string nickname, std::string phoneNumber, std::string darkestSecret)
 {
 	this->firstName = firstName;
 	this->lastName = lastName;
 	this->nickname = nickname;
 	this->phoneNumber = phoneNumber;
+	this->darkestSecret = darkestSecret;
 }
 
 std::string Contact::getFirstName()
@@ -40,4 +41,6 @@ void	Contact::print()
 	std::cout << this->nickname << std::endl;
 	std::cout << "phoneNumber : ";
 	std::cout << this->phoneNumber << std::endl;
+	std::cout << "darkestSecret : ";
+	std::cout << this->darkestSecret << std::endl;
 }
